@@ -1,12 +1,10 @@
 import React from "react";
-import { Canvas, useLoader } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import portfolioData from "../data/portfolioData";
-import * as THREE from "three";
 
 // Import 3D Models
 import Cave2 from "./3DModels/Cave2";
-import floor from "./floor.png";
 
 // Simple fadeIn animation function
 const fadeIn = (direction, type, delay, duration) => ({
@@ -127,5 +125,6 @@ const Hero = () => {
     </>
   );
 };
+
 
 export default Hero;
