@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import portfolioData from "../data/portfolioData";
 
 // Simple fadeIn animation function
 const fadeIn = (direction, type, delay, duration) => ({
@@ -87,5 +86,6 @@ const Contact = () => {
     </section>
   );
 };
+
 
 export default Contact;
