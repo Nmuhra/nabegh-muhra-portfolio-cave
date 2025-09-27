@@ -1,54 +1,40 @@
-import { useState } from "react";
-import portfolioData from '../data/portfolioData.js';
+import React from "react";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
-  const { header } = portfolioData;
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setActive(sectionId);
-  };
-
   return (
-    <nav className="w-full flex items-center py-5 fixed top-0 z-20 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto px-4">
-        <button
-          onClick={() => scrollToSection('hero')}
-          className="flex items-center gap-2 cursor-pointer"
-        >
-          <p className="text-purple-400 text-[18px] font-bold">
-            {header.name}'s <span className="text-white">Portfolio</span>
-          </p>
-        </button>
-
-        <ul className="list-none hidden sm:flex flex-row gap-10">
-          {["about", "experience", "contact"].map((item) => (
-            <li
-              key={item}
-              className={`${
-                active === item ? "text-purple-400" : "text-white"
-              } hover:text-purple-300 text-[18px] font-medium cursor-pointer transition-colors duration-300`}
-            >
-              <button
-                onClick={() => scrollToSection(item)}
-                className="block w-full h-full"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </button>
-            </li>
-          ))}
-        </ul>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a2e]/90 backdrop-blur-sm border-b border-emerald-400/20">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex justify-between items-center py-4">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-emerald-400 text-xl font-bold"
+          >
+            Portfolio
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="hidden md:flex space-x-8"
+          >
+            <a href="#about" className="text-white hover:text-emerald-400 transition-colors">
+              About
+            </a>
+            <a href="#experience" className="text-white hover:text-emerald-400 transition-colors">
+              Experience
+            </a>
+            <a href="#contact" className="text-white hover:text-emerald-400 transition-colors">
+              Contact
+            </a>
+          </motion.div>
+        </div>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
-
-
-
-
